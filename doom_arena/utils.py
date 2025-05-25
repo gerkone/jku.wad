@@ -82,7 +82,14 @@ def minmax(raw: Dict[str, torch.Tensor]):
     return {k: _minmax(v, k) for k, v in raw.items()}
 
 
-return torch.cat([
+def cat_dict(raw: Dict[str, torch.Tensor]):
+    """
+    returns (Channels, StackFrames, 128, 128)
+    """
+    # concat along channels
+    buffers = ["screen", "labels", "depth", "automap"]
+
+    return torch.cat([
         raw[k] if raw[k].ndim == 4 else raw[k].unsqueeze(0)
         for k in buffers
         if k in raw
