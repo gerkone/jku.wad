@@ -3,7 +3,7 @@
 import torch
 import torch.nn as nn
 from einops import rearrange
-from gym import Env
+from gymnasium import Env
 import random
 from typing import Dict
 from collections import OrderedDict

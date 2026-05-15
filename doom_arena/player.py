@@ -53,6 +53,7 @@ class PlayerConfig(object):
             vzd.GameVariable.SELECTED_WEAPON_AMMO,
             vzd.GameVariable.POSITION_X,
             vzd.GameVariable.POSITION_Y,
+            vzd.GameVariable.ANGLE, #added
         ]
         # game buttons
         # NOTE: order is impotant
@@ -160,7 +161,7 @@ def player_setup(game, player_config: PlayerConfig):
     if player_config.use_automap:
         game.set_automap_buffer_enabled(True)
         game.set_automap_mode(vzd.AutomapMode.OBJECTS)
-        game.set_automap_rotate(False)
+        game.set_automap_rotate(True)
         game.set_automap_render_textures(False)
 
     game.set_console_enabled(False)

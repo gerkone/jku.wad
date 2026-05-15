@@ -5,8 +5,8 @@ copied from PySC2 code
 import functools
 from concurrent import futures
 
-import gym
-from gym.spaces import Tuple
+import gymnasium as gym
+from gymnasium.spaces import Tuple
 
 
 class RunParallel(object):

@@ -17,9 +17,9 @@ from warnings import warn
 import copy
 
 import vizdoom as vzd
-from gym import Env
+from gymnasium import Env
 from torchvision import transforms
-from gym.spaces import Box, MultiDiscrete, Discrete
+from gymnasium.spaces import Box, MultiDiscrete, Discrete
 
 from doom_arena.parallel import ParallelEnv
 from doom_arena.utils import (
