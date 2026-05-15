@@ -7,3 +7,9 @@ _vizdoom.ini
 .venv/
 venv/
 env/
+
+
+# BC data creation
+bc_data_collection/
+
+model.onnx

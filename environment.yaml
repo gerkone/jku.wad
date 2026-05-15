@@ -31,7 +31,6 @@ dependencies:
   - pip:
     - vizdoom
     - farama-notifications
-    - gym
     - gymnasium
     - onnx
     - onnx2pytorch
