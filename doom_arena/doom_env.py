@@ -364,7 +364,7 @@ class VizdoomMPEnv(Env):
     Enables the red aiming crosshair.
 
     - hud (default: "full"):
-    Heads-up display level. Options are `"full"`, `"minimal"`, or `"off"` (or `None`).
+    Heads-up display level. Options are `"full"`, `"minimal"`, or `"none"` (or `None`).
     """
 
     def __init__(
