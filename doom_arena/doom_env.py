@@ -379,8 +379,10 @@ class VizdoomMPEnv(Env):
         n_stack_frames: Union[int, List[int]] = 1,
         extra_state: Optional[Union[List[ObsBuffer], List[List[ObsBuffer]]]] = None,
         doom_map: str = "ROOM",
-        crosshair: Sequence[bool] = True,
-        hud: Sequence[str] = "full",
+        crosshair: Union[bool, Sequence[bool]] = True,
+        hud: Optional[
+            Union[str, bool, Sequence[Optional[Union[str, bool]]]]
+        ] = "full",
         screen_format: Union[int, Sequence[int]] = 0,
         seed: int = 1337,
     ):
@@ -418,10 +420,21 @@ class VizdoomMPEnv(Env):
             n_stack_frames = [n_stack_frames] * num_players
         if not isinstance(crosshair, Sequence):
             crosshair = [crosshair] * num_players
-        if not isinstance(hud, Sequence):
+        if isinstance(hud, str) or not isinstance(hud, Sequence):
             hud = [hud] * num_players
         if not isinstance(screen_format, Sequence):
             screen_format = [screen_format] * num_players
+        for name, values in [
+            ("n_stack_frames", n_stack_frames),
+            ("crosshair", crosshair),
+            ("hud", hud),
+            ("screen_format", screen_format),
+        ]:
+            if len(values) != num_players:
+                raise ValueError(
+                    f"{name} must contain one value per player "
+                    f"({num_players} expected, got {len(values)})."
+                )
         # select empty port for multiplayer
         self.port = pick_unused_port()
         # host cfg
